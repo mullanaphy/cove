@@ -107,8 +107,8 @@ window.onload=function(){
 				max_columns = tileset.tiles[0].length,
 				row = 0,
 				column = 0;
-				for(var r=-7,rows=8;r<=rows;++r) {
-					for(var c=-7,columns=8;c<=columns;++c) {
+				for(var r = -7, rows = 8; r <= rows; ++r) {
+					for(var c = -7, columns = 8; c <= columns; ++c) {
 						row = input.y+r;
 						column = input.x+c;
 						if(tileset.wrap) {
@@ -121,7 +121,17 @@ window.onload=function(){
 						x = (c+7)*config.tile.x,
 						y = (r+7)*config.tile.y;
 						if(!tile) tile = tileset.defaultTile;
-						context2D.drawImage(image.tileset,tile.x*config.tile.x,tile.y*config.tile.y,config.tile.x,config.tile.y,x,y,config.tile.x,config.tile.y);
+						context2D.drawImage(
+							image.tileset,
+							tile.x*config.tile.x,
+							tile.y*config.tile.y,
+							config.tile.x,
+							config.tile.y,
+							x,
+							y,
+							config.tile.x,
+							config.tile.y
+							);
 						
 						// Display NPCs if they are on screen.
 						if($.rpg.npcs.length) {
@@ -131,16 +141,59 @@ window.onload=function(){
 								if(location.x==x&&location.y==y) {
 									switch(npc.direction()) {
 										case 'down':
-											context2D.drawImage(image.npcs,(0+blip)*config.tile.x,npc.sprite()*config.tile.y,config.tile.x,config.tile.y,x,y,config.tile.x,config.tile.y);
+											context2D.drawImage(
+												image.npcs,
+												(0+blip)*config.tile.x,
+												npc.sprite()*config.tile.y,
+												config.tile.x,
+												config.tile.y,
+												x,
+												y,
+												config.tile.x,
+												config.tile.y
+												);
 											break;
+											
 										case 'left':
-											context2D.drawImage(image.npcs,(2+blip)*config.tile.x,(npc.sprite()+1)*config.tile.y,config.tile.x,config.tile.y,x,y,config.tile.x,config.tile.y);
+											context2D.drawImage(
+												image.npcs,
+												(2+blip)*config.tile.x,
+												(npc.sprite()+1)*config.tile.y,
+												config.tile.x,
+												config.tile.y,
+												x,
+												y,
+												config.tile.x,
+												config.tile.y
+												);
 											break;
+											
 										case 'right':
-											context2D.drawImage(image.npcs,(0+blip)*config.tile.x,(npc.sprite()+1)*config.tile.y,config.tile.x,config.tile.y,x,y,config.tile.x,config.tile.y);
+											context2D.drawImage(
+												image.npcs,
+												(0+blip)*config.tile.x,
+												(npc.sprite()+1)*config.tile.y,
+												config.tile.x,
+												config.tile.y,
+												x,
+												y,
+												config.tile.x,
+												config.tile.y
+												);
 											break;
+											
 										default:
-											context2D.drawImage(image.npcs,(2+blip)*config.tile.x,npc.sprite()*config.tile.y,config.tile.x,config.tile.y,x,y,config.tile.x,config.tile.y);
+											context2D.drawImage(
+												image.npcs,
+												(2+blip)*config.tile.x,
+												npc.sprite()*config.tile.y,
+												config.tile.x,
+												config.tile.y,
+												x,
+												y,
+												config.tile.x,
+												config.tile.y
+												);
 											break;
 									}
 								}
@@ -148,21 +201,65 @@ window.onload=function(){
 						}
 					}
 				}
-				if(tileset.tiles[input.y][input.x].trigger) $.rpg.trigger(tileset.tiles[input.y][input.x].trigger);
+				if(tileset.tiles[input.y][input.x].trigger)
+					$.rpg.trigger(tileset.tiles[input.y][input.x].trigger);
 				
 				// Draw the player.
 				switch(input.direction) {
 					case 'down':
-						context2D.drawImage(image.user,(0+blip)*config.tile.x,$.rpg.state.user.sprite*config.tile.y,config.tile.x,config.tile.y,7*config.tile.x,(7*config.tile.y)-2,config.tile.x,config.tile.y);
+						context2D.drawImage(
+							image.user,
+							(0+blip)*config.tile.x,
+							$.rpg.state.user.sprite*config.tile.y,
+							config.tile.x,
+							config.tile.y,
+							7*config.tile.x,
+							(7*config.tile.y)-2,
+							config.tile.x,
+							config.tile.y
+							);
 						break;
+						
 					case 'left':
-						context2D.drawImage(image.user,(2+blip)*config.tile.x,($.rpg.state.user.sprite+1)*config.tile.y,config.tile.x,config.tile.y,7*config.tile.x,(7*config.tile.y)-2,config.tile.x,config.tile.y);
+						context2D.drawImage(
+							image.user,
+							(2+blip)*config.tile.x,
+							($.rpg.state.user.sprite+1)*config.tile.y,
+							config.tile.x,
+							config.tile.y,
+							7*config.tile.x,
+							(7*config.tile.y)-2,
+							config.tile.x,
+							config.tile.y
+							);
 						break;
+						
 					case 'right':
-						context2D.drawImage(image.user,(0+blip)*config.tile.x,($.rpg.state.user.sprite+1)*config.tile.y,config.tile.x,config.tile.y,7*config.tile.x,(7*config.tile.y)-2,config.tile.x,config.tile.y);
+						context2D.drawImage(
+							image.user,
+							(0+blip)*config.tile.x,
+							($.rpg.state.user.sprite+1)*config.tile.y,
+							config.tile.x,
+							config.tile.y,
+							7*config.tile.x,
+							(7*config.tile.y)-2,
+							config.tile.x,
+							config.tile.y
+							);
 						break;
+						
 					default:
-						context2D.drawImage(image.user,(2+blip)*config.tile.x,$.rpg.state.user.sprite*config.tile.y,config.tile.x,config.tile.y,7*config.tile.x,(7*config.tile.y)-2,config.tile.x,config.tile.y);
+						context2D.drawImage(
+							image.user,
+							(2+blip)*config.tile.x,
+							$.rpg.state.user.sprite*config.tile.y,
+							config.tile.x,
+							config.tile.y,
+							7*config.tile.x,
+							(7*config.tile.y)-2,
+							config.tile.x,
+							config.tile.y
+							);
 						break;
 				}
 				
@@ -182,7 +279,7 @@ window.onload=function(){
 				// If somehow the user went out of bounds.
 				else if(!tileset.wrap&&(input.x<0||input.y<0||input.x>tileset.tiles[0].length||input.y>tileset.tiles.length)) {
 					//				$.rpg.tileset(tileset.exit.tileset,tileset.exit.x,tileset.exit.y);
-					input.action=false;
+					input.action = false;
 				}
 			};
 			$.console("\tDONE!");
@@ -198,7 +295,9 @@ window.onload=function(){
 					$.rpg.state.input.y = y;
 					$.rpg.state.input.direction = tileset.start.direction;
 					image.tileset.src = tileset.image;
-					if(tileset.npcs.length) for(var i=0,count=tileset.npcs.length;i<count;++i) $.rpg.npcs.push(new $.rpg.npc(tileset.npcs[i]));
+					if(tileset.npcs.length)
+						for(var i=0,count=tileset.npcs.length;i<count;++i)
+							$.rpg.npcs.push(new $.rpg.npc(tileset.npcs[i]));
 				};
 				if(!tilesets[tileset]) {
 					$.ajax({
@@ -228,62 +327,83 @@ window.onload=function(){
 				};
 				switch(event.keyCode) {
 					case keys.LEFT: // Left.
-						$.rpg.state.input.direction='left';
+						$.rpg.state.input.direction = 'left';
 						--step.x;
 						if(step.x<0) {
-							if(tileset.wrap) step.x = tileset.tiles[0].length-1;
-							else return;
+							if(tileset.wrap)
+								step.x = tileset.tiles[0].length-1;
+							else
+								return;
 						}
 						break;
+						
 					case keys.DOWN: // Down.
 						$.rpg.state.input.direction='down';
 						++step.y;
 						if(step.y>=tileset.tiles.length) {
-							if(tileset.wrap) step.y=0;
-							else return;
+							if(tileset.wrap)
+								step.y = 0;
+							else
+								return;
 						}
 						break;
+						
 					case keys.RIGHT: // Right.
-						$.rpg.state.input.direction='right';
+						$.rpg.state.input.direction = 'right';
 						++step.x;
 						if(step.x>=tileset.tiles[0].length) {
-							if(tileset.wrap) step.x=0;
-							else return;
+							if(tileset.wrap)
+								step.x = 0;
+							else
+								return;
 						}
 						break;
+						
 					case keys.UP: // Up.
-						$.rpg.state.input.direction='up';
+						$.rpg.state.input.direction = 'up';
 						--step.y;
 						if(step.y<0) {
-							if(tileset.wrap) step.y = tileset.tiles.length-1;
-							else return;
+							if(tileset.wrap)
+								step.y = tileset.tiles.length-1;
+							else
+								return;
 						}
 						break;
+						
 					case keys.MENU: // Menu.
 						$.rpg.menu();
 						break;
+						
 					case keys.ACTION: // Menu.
 						$.rpg.state.input.action=true;
 						break;
+						
 					case keys.PAUSE:
-						if($.rpg.state.input.pause)$.rpg.state.input.pause=false;
-						else $.rpg.state.input.pause=true;
+						if($.rpg.state.input.pause)
+							$.rpg.state.input.pause=false;
+						else
+							$.rpg.state.input.pause=true;
+						
 						break;
 				}
-				if(($.rpg.state.user.movement==2)||($.rpg.state.user.movement==tileset.tiles[step.y][step.x].type)) {
+				if(($.rpg.state.user.movement == 2) || ($.rpg.state.user.movement == tileset.tiles[step.y][step.x].type)) {
 					$.rpg.state.input.x = step.x;
 					$.rpg.state.input.y = step.y;
 				}
 				$.rpg.state.input.trigger = false;
 				$.console($.rpg.state.input.x+','+$.rpg.state.input.y);
 			};
-			if($.browser.CHROME||$.browser.SAFARI) document.onkeydown=_handler;
-			else document.onkeypress=_handler;
+			
+			if($.browser.CHROME||$.browser.SAFARI)
+				document.onkeydown=_handler;
+			else
+				document.onkeypress=_handler;
+			
 			$.console("\tDONE!");
 			
 			// Triggers Handler.
 			$.console("Setting Triggers...\n");
-			$.rpg.trigger=function(trigger) {
+			$.rpg.trigger = function(trigger) {
 				if($.rpg.state.input.trigger) return;
 				$.rpg.state.input.trigger = true;
 				$.rpg.state.input.pause = true;
@@ -292,12 +412,16 @@ window.onload=function(){
 						case 'function':
 							(trigger());
 							break;
+							
 						case 'object':
 							
 							break;
+							
 						case 'array':
-							if(trigger&&typeof $.rpg.triggers[trigger.shift()]==='function') $.rpg.triggers[func].apply(this,trigger);
+							if(trigger && typeof $.rpg.triggers[trigger.shift()]==='function')
+								$.rpg.triggers[func].apply(this,trigger);
 							break;
+							
 						default:
 							$.console(trigger);
 					}				
@@ -308,7 +432,7 @@ window.onload=function(){
 			
 			// Menu.
 			$.console("Setting Menu...\n");
-			$.rpg.menu=function() {
+			$.rpg.menu = function() {
 				// Open it if it isn't already opened.
 				if(!$.rpg.menu.opened) {
 					$.rpg.state.input.pause = true;
@@ -316,7 +440,8 @@ window.onload=function(){
 					$.popup();
 				}
 				// Otherwise we're just going to close it.
-				else $.rpg.state.input.pause = false;
+				else
+					$.rpg.state.input.pause = false;
 			};
 			$.rpg.menu.prototype.execute=function() {
 				$('#dialog').html('Dialog').fadeIn();
@@ -326,14 +451,13 @@ window.onload=function(){
 			
 			// NPC handler.
 			$.console("Initiating NPC Handler...\n");
-			$.rpg.prototype.npc=function(settings){
+			$.rpg.prototype.npc = function(settings){
 				settings = $.object.extend({
 					action:function(){
 						alert('hi');
 					}
 				},settings);
-				npc = settings;
-				return npc;
+				return settings;
 			};
 			$.console("\tDONE!");
 			
@@ -368,11 +492,9 @@ window.onload=function(){
 							);
 						$.console("\tDONE!\n");
 						$.console("Play on!");
-						if(typeof tileset.npc==='array'&&tileset.npc.length) {
-							for(var i = 0,count = tileset.npc.length; i <= count; ++i) {
+						if(typeof tileset.npc === 'array' && tileset.npc.length)
+							for(var i = 0, count = tileset.npc.length; i <= count; ++i)
 								$.rpg.npcs.push(new $.rpg.npc(tileset.npc[i]));
-							}
-						}
 					}
 				});
 			})();

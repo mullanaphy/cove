@@ -1,4 +1,4 @@
-`<?php
+<?php
 	$source = isset($_GET['tileset'])?str_replace('/','',$_GET['tileset']):'world.0.2';
 	$source = 'sources/'.$source;
 	if(isset($_GET['_ajax'])):
@@ -121,8 +121,10 @@
 		);
 
 		$i = 0;
-		$count = count(reset($rows));
+		$count = strlen(trim(reset($rows)));
+		
 		foreach($rows as $row):
+			$row = trim($row);
 			for($x = 0; $x < $count; ++$x):
 				if(isset($row[$x])) $return['tiles'][$i][] = $tiles[$row[$x]];
 				else $return['tiles'][$i][] = $tiles['%'];
