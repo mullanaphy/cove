@@ -1,0 +1,28 @@
+SYNOPSIS
+
+This is a game developed using HTML5\JS and the Canvas tag. On the backend we
+will be using PHP\MySQL. Back end will consist of save states, transactions, and
+loading game content.
+
+GRAPHICS
+
+Currently using sprites from Ultima: Quest of the Avatar for the NES. My
+personal favorite. If development continues I plan on paying someone to create
+sprites that are more 16/32bit generation.
+
+SOUND
+
+Nothing as of now. Chiptunes will probably be used until after professional
+sprites are acquired.
+
+INPUT
+
+Mappable.
+
+STORY
+
+Soloing it for now.
+
+LENGTH
+
+Long.
